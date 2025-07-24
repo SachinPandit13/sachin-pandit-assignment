@@ -1,0 +1,9 @@
+@if(isVisible()) {
+<div class="toast-container position-fixed text-center">
+  <div class="toast show" [ngClass]="toastClass">
+    <div class="toast-body">
+      {{ message() }}
+    </div>
+  </div>
+</div>
+}
