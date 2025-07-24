@@ -1,0 +1,7 @@
+.card {
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.03);
+  }
+  border-radius: 1.5rem;
+}

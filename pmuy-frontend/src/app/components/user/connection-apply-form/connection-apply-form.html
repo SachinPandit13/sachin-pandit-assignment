@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Apply for LPG Connection</h2>
+
+  <form [formGroup]="applyForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <!-- Aadhar Number -->
+        <div class="mb-3">
+          <label for="aadhar" class="form-label">Aadhar Number</label>
+          <input
+            type="text"
+            id="aadhar"
+            class="form-control"
+            formControlName="aadharNumber"
+            placeholder="Enter 12-digit Aadhar number"
+          />
+
+          @if ((submitted || f['aadharNumber'].touched) && f['aadharNumber'].errors) {
+          <div class="text-danger">
+            @if (f['aadharNumber'].errors['required']) {
+            <div>Aadhar is required</div>
+            }
+            @if (f['aadharNumber'].errors['pattern']) {
+            <div>Enter a valid 12-digit Aadhar</div>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <!-- Income -->
+        <div class="mb-3">
+          <label for="income" class="form-label">Annual Income (₹)</label>
+          <input
+            type="number"
+            id="income"
+            class="form-control"
+            formControlName="income"
+            placeholder="e.g. 45000"
+          />
+
+          @if ((submitted || f['income'].touched) && f['income'].errors) {
+          <div class="text-danger">
+            @if (f['income'].errors['required']) {
+            <div>Income is required</div>
+            }
+            @if (f['income'].errors['min'] || f['income'].errors['max']) {
+            <div>Income must be less than 1 lakh (₹).</div>
+            }
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 col-sm-12 text-center">
+        <button
+          class="btn btn-primary mt-3"
+          type="submit"
+          [disabled]="applyForm.invalid"
+        >
+          Submit Form
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<app-shared-toast></app-shared-toast>
